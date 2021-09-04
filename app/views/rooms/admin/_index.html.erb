@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th colspan="1"></th></th>
+      <th>Name</th>
+      <th>Created</th>
+      <th>Updated</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <%= render 'rooms/admin/room', room: room %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Room', new_room_path %>

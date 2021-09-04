@@ -1,0 +1,38 @@
+<p>
+  <%= image_tag(@room.main_image.url, height: 200) if @room.main_image? %>
+  <% @room.images.each do |image| %>
+    <%= image_tag(image.room_image.url, height: 200) if image.room_image? %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @room.name %>
+</p>
+
+<p>
+  <strong>Room type:</strong>
+  <%= @room.room_type %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @room.price %>
+</p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @room.short_description %>
+</p>
+
+<p>
+  <strong>Full description:</strong>
+  <%= @room.full_description %>
+</p>
+
+<% if current_admin %>
+  <%= render "rooms/admin/show_links" %>
+<% else %>
+  <%= render "rooms/not_admin/show_links" %>
+<% end %>
+

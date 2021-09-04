@@ -1,0 +1,10 @@
+<%= form_with(model: booking, url: "#{bookings_url}/#{booking.id}") do |form| %>
+<div class="field">
+    <%= form.label :actual %>
+    <%= form.check_box :actual %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Update' %>
+  </div>
+<% end %>

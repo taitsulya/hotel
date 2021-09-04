@@ -1,0 +1,39 @@
+<%= form_with(model: [@room, booking], url: room_booking_path) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <% booking.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+    <% booking.errors.full_messages_for(:email).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mobile_phone %>
+    <%= form.text_field :mobile_phone %>
+    <% booking.errors.full_messages_for(:mobile_phone).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :arrival %>
+    <%= form.date_select :arrival %>
+  </div>
+
+  <div class="field">
+    <%= form.label :departure %>
+    <%= form.date_select :departure %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

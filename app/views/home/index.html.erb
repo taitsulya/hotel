@@ -1,0 +1,12 @@
+<% if current_admin %>
+  <%= render 'form', home: @home %>
+<% else %>
+  <p><%= @home.description %></p>
+<% end %>
+
+<% @rooms.each do |room| %>
+  <%= image_tag(room.main_image.url, height: 200) if room.main_image? %>
+<% end %>
+<% @images.each do |image| %>
+  <%= image_tag(image.room_image.url, height: 200) if image.room_image? %>
+<% end %>

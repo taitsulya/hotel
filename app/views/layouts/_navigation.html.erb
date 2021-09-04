@@ -1,0 +1,7 @@
+<nav>
+  <% if admin_signed_in? %>
+    <%= render "layouts/admin/navigation" %>
+  <% else %>
+    <%= render "layouts/not_admin/navigation" %>
+  <% end %>
+</nav>

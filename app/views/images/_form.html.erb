@@ -1,0 +1,10 @@
+<%= form_with(model: image, url: room_images_path) do |form| %>
+  <div class="field">
+    <%= form.label :room_image %>
+    <%= form.file_field :room_image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Upload' %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<%= render 'reviews/not_admin/form', review: @review %>
+
+<table>
+  <thead>
+  <tr>
+    <th>Author name</th>
+    <th>Author email</th>
+    <th>Review</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @reviews.each do |review| %>
+    <tr>
+      <%= render 'reviews/not_admin/review', review: review %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

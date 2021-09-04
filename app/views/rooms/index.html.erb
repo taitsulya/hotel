@@ -1,0 +1,7 @@
+<h1>Rooms</h1>
+
+<% if current_admin %>
+  <%= render "rooms/admin/index" %>
+<% else %>
+  <%= render "rooms/not_admin/index" %>
+<% end %>

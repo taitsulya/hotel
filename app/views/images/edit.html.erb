@@ -1,0 +1,30 @@
+<h1>Images</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <% if @room.main_image? %>
+      <td><%= image_tag(@room.main_image.url, width: 200) %></td>
+      <td>Main image</td>
+    <% end %>
+  </tr>
+  <% @images.each do |image| %>
+    <tr>
+      <td><%= image_tag(image.room_image.url, width: 200) if image.room_image? %></td>
+      <td><%= link_to 'Destroy', room_image_path(room_id: @room.id, id: image.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= render 'form', image: @room.images.build %>
+<%= link_to 'All rooms', rooms_path %> |
+<%= link_to 'Back', edit_room_path(@room) %>

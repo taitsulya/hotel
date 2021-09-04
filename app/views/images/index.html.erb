@@ -1,0 +1,13 @@
+<h1>Images</h1>
+
+<p>
+  <%= image_tag(@room.main_image.url, height: 200) if @room.main_image? %>
+  <% @images.each do |image| %>
+    <%= image_tag(image.room_image.url, height: 200) if image.room_image? %>
+  <% end %>
+</p>
+
+<br>
+
+<%= link_to 'Room', @room %> |
+<%= link_to 'All rooms', rooms_path %>

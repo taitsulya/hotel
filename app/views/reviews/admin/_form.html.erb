@@ -1,0 +1,10 @@
+<%= form_with(model: review) do |form| %>
+  <div class="field">
+    <%= form.label :checked %>
+    <%= form.check_box :checked %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Update' %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<%= form_with(model: review) do |form| %>
+  <div class="field">
+    <%= form.label 'Your name' %>
+    <%= form.text_field :author_name %>
+    <% review.errors.full_messages_for(:author_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Your email' %>
+    <%= form.text_field :author_email %>
+    <% review.errors.full_messages_for(:author_email).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Review' %>
+    <%= form.text_area :body %>
+    <% review.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

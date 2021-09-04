@@ -1,0 +1,6 @@
+<td><%= image_tag(room.main_image.url, width: 300) if room.main_image? %></td>
+<td><%= link_to room.name, new_room_booking_path(room) %></td>
+<td><%= room.room_type %></td>
+<td><%= room.price %></td>
+<td><%= room.short_description %></td>
+<td><%= link_to 'Book', new_room_booking_path(room) %></td>

@@ -1,0 +1,21 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - bin/*
+  NewCops: enable
+  TargetRubyVersion: '3.0.0'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Layout/LineLength:
+  Exclude:
+    - config/initializers/devise.rb
+
+require: rubocop-rails

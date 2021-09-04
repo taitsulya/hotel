@@ -1,0 +1,30 @@
+<h1>New Booking</h1>
+
+<%= image_tag(@room.main_image.url, height: 200) if @room.main_image? %>
+<% @images.each do |image| %>
+  <%= image_tag(image.room_image.url, height: 200) if image.room_image? %>
+<% end %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @room.name %>
+</p>
+
+<p>
+  <strong>Room type:</strong>
+  <%= @room.room_type %>
+</p>
+
+<p>
+  <strong>Price per day:</strong>
+  <%= @room.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @room.full_description %>
+</p>
+
+<%= render 'bookings/not_admin/form', booking: @booking %>
+
+<%= link_to 'Back', rooms_path %>

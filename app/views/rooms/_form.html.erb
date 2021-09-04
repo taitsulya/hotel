@@ -1,0 +1,55 @@
+<%= form_with(model: room) do |form| %>
+  <div class="field">
+    <% if room.main_image? %>
+        <%= image_tag(room.main_image.url, width: 400) %>
+        <%= link_to 'Delete photo', "#{room_path}/image", method: :patch, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <%= form.label :main_image %>
+    <%= form.file_field :main_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <% room.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :room_type %>
+    <%= form.text_field :room_type %>
+    <% room.errors.full_messages_for(:room_type).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+    <% room.errors.full_messages_for(:price).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :short_description %>
+    <%= form.text_field :short_description %>
+    <% room.errors.full_messages_for(:short_description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :full_description %>
+    <%= form.text_area :full_description %>
+    <% room.errors.full_messages_for(:full_description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

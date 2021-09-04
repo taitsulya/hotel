@@ -1,0 +1,7 @@
+<h1>Reviews</h1>
+
+<% if current_admin %>
+  <%= render "reviews/admin/index" %>
+<% else %>
+  <%= render "reviews/not_admin/index" %>
+<% end %>

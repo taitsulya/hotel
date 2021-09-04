@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Room type</th>
+      <th>Price per day</th>
+      <th>Description</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <%= render 'rooms/not_admin/room', room: room %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
