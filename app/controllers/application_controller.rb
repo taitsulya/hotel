@@ -3,13 +3,11 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
+  alias current_user current_admin
+
   rescue_from Pundit::NotAuthorizedError, with: :not_admin
 
   private
-
-  def current_user
-    current_admin
-  end
 
   def not_admin
     flash[:warning] = "You don't have permissions to perform this action."
