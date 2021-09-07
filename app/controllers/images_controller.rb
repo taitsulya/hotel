@@ -4,7 +4,6 @@ class ImagesController < ApplicationController
   before_action :set_image, only: :destroy
   before_action :current_room
 
-  # GET /images or /images.json
   def index
     @images = @room.images
     authorize @images
@@ -15,7 +14,6 @@ class ImagesController < ApplicationController
     authorize @images
   end
 
-  # POST /images or /images.json
   def create
     @image = @room.images.build(image_params)
     authorize @image
@@ -31,7 +29,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  # DELETE /images/1 or /images/1.json
   def destroy
     @image.destroy
     respond_to do |format|
@@ -42,7 +39,6 @@ class ImagesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_image
     @image = Image.find(params[:id])
     authorize @image
@@ -52,7 +48,6 @@ class ImagesController < ApplicationController
     @room = Room.find(params[:room_id])
   end
 
-  # Only allow a list of trusted parameters through.
   def image_params
     params.require(:image).permit(:room_image, :room_id)
   end

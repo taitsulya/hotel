@@ -23,7 +23,6 @@ class HomeController < ApplicationController
     Home.create(description: 'The best hotel ever') if Home.all.count.zero?
   end
 
-  # Only allow a list of trusted parameters through.
   def home_params
     params.require(:home).permit(:description)
   end

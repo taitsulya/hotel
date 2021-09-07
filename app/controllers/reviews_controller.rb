@@ -3,7 +3,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[update destroy]
 
-  # GET /reviews or /reviews.json
   def index
     @reviews = if current_admin
                  Review.all.order(created_at: :desc)
@@ -14,7 +13,6 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
-  # POST /reviews or /reviews.json
   def create
     @review = Review.new(review_params)
     authorize @review
@@ -32,7 +30,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /reviews/1 or /reviews/1.json
   def update
     respond_to do |format|
       if @review.update(review_params)
@@ -51,7 +48,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # DELETE /reviews/1 or /reviews/1.json
   def destroy
     @review.destroy
     respond_to do |format|
@@ -62,13 +58,11 @@ class ReviewsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_review
     @review = Review.find(params[:id])
     authorize @review
   end
 
-  # Only allow a list of trusted parameters through.
   def review_params
     params.require(:review).permit(:author_name, :author_email, :body, :checked)
   end

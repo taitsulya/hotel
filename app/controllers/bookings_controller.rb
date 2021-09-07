@@ -4,7 +4,6 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[update destroy]
   before_action :current_room, :current_room_images, only: %i[new create show]
 
-  # GET /bookings or /bookings.json
   def index
     @bookings = Booking.all.order(created_at: :desc)
     authorize @bookings
@@ -16,18 +15,15 @@ class BookingsController < ApplicationController
     end
   end
 
-  # GET /bookings/1 or /bookings/1.json
   def show
     redirect_to rooms_path unless @booking
   end
 
-  # GET /bookings/new
   def new
     @booking = @room.bookings.build
     authorize @booking
   end
 
-  # POST /bookings or /bookings.json
   def create
     @booking = @room.bookings.build(booking_params)
     authorize @booking
@@ -45,7 +41,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bookings/1 or /bookings/1.json
   def update
     respond_to do |format|
       if @booking.update(booking_params)
@@ -58,7 +53,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  # DELETE /bookings/1 or /bookings/1.json
   def destroy
     @booking.destroy
     respond_to do |format|
@@ -69,7 +63,6 @@ class BookingsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_booking
     @booking = Booking.find(params[:id])
     authorize @booking
@@ -83,7 +76,6 @@ class BookingsController < ApplicationController
     @images = @room.images
   end
 
-  # Only allow a list of trusted parameters through.
   def booking_params
     params.require(:booking).permit(:name, :email, :mobile_phone, :arrival, :departure, :room_id, :actual)
   end
