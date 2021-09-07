@@ -58,7 +58,7 @@ group :test do
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'pundit-matchers', '~> 1.7.0'
-  gem 'simplecov', '~> 0.17.0', require: false
+  gem 'simplecov', require: false
   gem 'webdrivers'
 end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'pundit/matchers'
-require_relative 'support/pundit_matcher'
+require 'support/pundit_matcher'
 
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
