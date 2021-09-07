@@ -35,6 +35,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'shoulda',                      '~> 3.5'
+  gem 'shoulda-callback-matchers',    '~> 1.1', '>= 1.1.3'
 end
 
 group :development do
@@ -53,7 +55,10 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'simplecov', require: false
+  gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+  gem 'pundit-matchers', '~> 1.7.0'
+  gem 'simplecov', '~> 0.17.0', require: false
   gem 'webdrivers'
 end
 
