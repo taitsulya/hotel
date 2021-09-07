@@ -25,7 +25,7 @@ class ImagesController < ApplicationController
         format.html { redirect_to "#{room_images_path(@room)}/edit", notice: 'Image was successfully uploaded.' }
         format.json { render :show, status: :created, location: @image }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :index, status: :unprocessable_entity }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
