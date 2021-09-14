@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe HomePolicy do
+RSpec.describe(HomePolicy) do
   subject { HomePolicy.new(admin, home) }
 
   let(:home) { FactoryBot.create(:home) }
