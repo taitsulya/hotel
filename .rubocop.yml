@@ -21,4 +21,7 @@ Layout/LineLength:
   Exclude:
     - config/initializers/devise.rb
 
+Layout/EndOfLine:
+  Enabled: false
+
 require: rubocop-rails
