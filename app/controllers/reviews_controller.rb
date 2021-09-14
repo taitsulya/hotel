@@ -31,11 +31,13 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.update(review_params)
         format.html do
-          redirect_to reviews_url, notice: if review_params[:checked] == '1'
-                                             'Review was checked. It will be displayed to users.'
-                                           else
-                                             "Review was unchecked. It won't be displayed to users."
-                                           end
+          flash[:notice] =
+            if review_params[:checked] == '1'
+              'Review was checked. It will be displayed to users.'
+            else
+              "Review was unchecked. It won't be displayed to users."
+            end
+          redirect_to reviews_url
         end
         format.json { render :index, status: :ok, location: @review }
       else
