@@ -4,11 +4,8 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: %i[update destroy]
 
   def index
-    @reviews = if current_admin
-                 Review.all.order(created_at: :desc)
-               else
-                 Review.where(checked: true).order(created_at: :desc)
-               end
+    @reviews = Review.order(created_at: :desc)
+    @reviews = Review.checked_and_sorted unless current_admin
     authorize @reviews
     @review = Review.new
   end
@@ -22,7 +19,7 @@ class ReviewsController < ApplicationController
         format.json { render :index, status: :created, location: @review }
       else
         format.html do
-          @reviews = Review.where(checked: true).order(created_at: :desc)
+          @reviews = Review.checked_and_sorted
           render :index, status: :unprocessable_entity
         end
         format.json { render json: @review.errors, status: :unprocessable_entity }
