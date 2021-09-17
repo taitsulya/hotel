@@ -1,4 +1,4 @@
-<%= form_with(model: booking, url: "#{bookings_url}/#{booking.id}") do |form| %>
+<%= form_with(model: booking, url: booking_url(booking)) do |form| %>
 <div class="field">
     <%= form.label :actual %>
     <%= form.check_box :actual %>
