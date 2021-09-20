@@ -1,7 +1,8 @@
 <h1>Bookings</h1>
-<p>Download:
-  <%= link_to "CSV", bookings_url(format: "csv") %> |
-  <%= link_to "Excel", bookings_url(format: "xlsx") %>
+<p>
+  <%= link_to "Generate CSV", bookings_csv_path, method: :post %> |
+  <%= link_to "Generate Excel", bookings_xlsx_path, method: :post %> |
+  <%= link_to "Get statistics", bookings_statistics_path %>
 </p>
 
 <table>

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   patch 'rooms/:id/image', to: 'rooms#delete_image'
   resources :bookings, only: %i[index update destroy]
   resolve('Booking') { [:booking] }
+  post 'bookings/csv', to: 'bookings#generate_csv'
+  post 'bookings/xlsx', to: 'bookings#generate_xlsx'
+  get 'bookings/statistics', to: 'bookings#statistics'
   patch '/', to: 'home#update'
   root to: 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
