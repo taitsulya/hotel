@@ -23,7 +23,7 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
+        format.html { redirect_to @room, notice: t('rooms.created') }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -35,7 +35,7 @@ class RoomsController < ApplicationController
   def update
     respond_to do |format|
       if @room.update(room_params)
-        format.html { redirect_to @room, notice: 'Room was successfully updated.' }
+        format.html { redirect_to @room, notice: t('rooms.updated') }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     respond_to do |format|
-      format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
+      format.html { redirect_to rooms_url, notice: t('rooms.destroyed') }
       format.json { head :no_content }
     end
   end
@@ -55,7 +55,7 @@ class RoomsController < ApplicationController
   def delete_image
     respond_to do |format|
       if @room.update(main_image: nil)
-        format.html { redirect_to edit_room_path, notice: 'Image was successfully deleted.' }
+        format.html { redirect_to edit_room_path, notice: t('rooms.image.deleted') }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit, status: :unprocessable_entity }

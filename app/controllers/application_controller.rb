@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   private
 
   def not_admin
-    flash[:warning] = "You don't have permissions to perform this action."
+    flash[:warning] = t('not_permitted')
     redirect_to(request.referer || root_path)
   end
 end

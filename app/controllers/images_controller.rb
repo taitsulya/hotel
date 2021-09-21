@@ -20,7 +20,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to "#{room_images_path(@room)}/edit", notice: 'Image was successfully uploaded.' }
+        format.html { redirect_to "#{room_images_path(@room)}/edit", notice: t('images.uploaded') }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :index, status: :unprocessable_entity }
@@ -32,7 +32,7 @@ class ImagesController < ApplicationController
   def destroy
     @image.destroy
     respond_to do |format|
-      format.html { redirect_to room_images_url, notice: 'Image was successfully destroyed.' }
+      format.html { redirect_to room_images_url, notice: t('images.destroyed') }
       format.json { head :no_content }
     end
   end

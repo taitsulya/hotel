@@ -30,4 +30,48 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  bookings:
+    created: 'Booking was successfully created.'
+    updated: 'Booking was successfully updated.'
+    destroyed: 'Booking was successfully destroyed.'
+    bookings: 'Bookings'
+  home:
+    description:
+      updated: 'Description was successfully updated.'
+      default: 'The best hotel ever'
+      update: 'Update description'
+  images:
+    uploaded: 'Image was successfully uploaded.'
+    destroyed: 'Image was successfully destroyed.'
+    edit: 'Edit images'
+  reviews:
+    created: 'Review was successfully created. It will be checked by admin.'
+    checked: 'Review was checked. It will be displayed to users.'
+    unchecked: "Review was unchecked. It won't be displayed to users."
+    destroyed: 'Review was successfully destroyed.'
+    reviews: 'Reviews'
+  rooms:
+    created: 'Room was successfully created.'
+    updated: 'Room was successfully updated.'
+    destroyed: 'Room was successfully destroyed.'
+    all: 'All rooms'
+    rooms: 'Rooms'
+    image:
+      deleted: 'Image was successfully deleted.'
+      delete: 'Delete image'
+  update: 'Update'
+  destroy: 'Destroy'
+  confirm: 'Are you sure?'
+  back: 'Back'
+  upload: 'Upload'
+  room: 'Room'
+  homepage: 'Homepage'
+  log_out: 'Log out'
+  your_name: 'Your name'
+  your_email: 'Your email'
+  review: 'Review'
+  new_room: 'New room'
+  edit: 'Edit'
+  not_permitted: "You don't have permissions to perform this action."
+
+

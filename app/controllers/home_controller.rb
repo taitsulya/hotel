@@ -11,7 +11,7 @@ class HomeController < ApplicationController
 
   def update
     if Home.first.update(home_params)
-      redirect_to root_path, notice: 'Description was successfully updated.'
+      redirect_to root_path, notice: t('home.description.updated')
     else
       render :index, status: :unprocessable_entity
     end
@@ -20,7 +20,7 @@ class HomeController < ApplicationController
   private
 
   def set_default_description
-    Home.create(description: 'The best hotel ever') if Home.all.count.zero?
+    Home.create(description: t('home.description.default')) if Home.all.count.zero?
   end
 
   def home_params

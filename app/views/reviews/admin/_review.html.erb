@@ -3,4 +3,4 @@
 <td style="max-width: 400px;word-wrap: break-word;"><%= review.body %></td>
 <td><%= review.created_at %></td>
 <td><%= render 'reviews/admin/form', review: review %></td>
-<td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<td><%= link_to t('destroy'), review, method: :delete, data: { confirm: t('confirm') } %></td>

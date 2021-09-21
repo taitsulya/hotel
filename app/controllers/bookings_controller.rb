@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
     respond_to do |format|
       if @booking.save
         format.html do
-          flash.now[:notice] = 'Booking was successfully created.'
+          flash.now[:notice] = t('bookings.created')
           render :show
         end
         format.json { render :show, status: :created, location: @booking }
@@ -44,7 +44,7 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to bookings_url, notice: 'Booking was successfully updated.' }
+        format.html { redirect_to bookings_url, notice: t('bookings.updated') }
         format.json { render :index, status: :ok, location: @booking }
       else
         format.html { render :index, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
+      format.html { redirect_to bookings_url, notice: t('bookings.destroyed') }
       format.json { head :no_content }
     end
   end

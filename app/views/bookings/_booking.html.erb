@@ -5,4 +5,4 @@
 <td><%= booking.departure %></td>
 <td><%= booking.room_id %></td>
 <td><%= render 'bookings/admin/form', booking: booking  %></td>
-<td><%= link_to 'Destroy', booking_url(booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<td><%= link_to t('destroy'), booking_url(booking.id), method: :delete, data: { confirm: t('confirm') } %></td>

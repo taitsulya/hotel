@@ -2,7 +2,7 @@
   <div class="field">
     <% if room.main_image? %>
         <%= image_tag(room.main_image.url, width: 400) %>
-        <%= link_to 'Delete photo', "#{room_path}/image", method: :patch, data: { confirm: 'Are you sure?' } %>
+        <%= link_to t('rooms.image.delete'), "#{room_path}/image", method: :patch, data: { confirm: t('confirm') } %>
     <% end %>
     <%= form.label :main_image %>
     <%= form.file_field :main_image %>

@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
     authorize @review
     respond_to do |format|
       if @review.save
-        format.html { redirect_to reviews_url, notice: 'Review was successfully created. It will be checked by admin.' }
+        format.html { redirect_to reviews_url, notice: t('reviews.created') }
         format.json { render :index, status: :created, location: @review }
       else
         format.html do
@@ -35,9 +35,9 @@ class ReviewsController < ApplicationController
       if @review.update(review_params)
         format.html do
           redirect_to reviews_url, notice: if review_params[:checked] == '1'
-                                             'Review was checked. It will be displayed to users.'
+                                             t('reviews.checked')
                                            else
-                                             "Review was unchecked. It won't be displayed to users."
+                                             t('reviews.unchecked')
                                            end
         end
         format.json { render :index, status: :ok, location: @review }
@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to reviews_url, notice: t('reviews.destroyed') }
       format.json { head :no_content }
     end
   end
