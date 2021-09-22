@@ -2,15 +2,15 @@
 
 require 'rails_helper'
 
-RSpec.describe RoomsController, type: :controller do
+RSpec.describe(RoomsController, type: :controller) do
   before do
-    allow(controller).to receive(:authorize).and_return(true)
+    allow(controller).to(receive(:authorize).and_return(true))
   end
 
   describe 'before actions' do
     describe 'set_room' do
       it 'is expected to define before action' do
-        is_expected.to use_before_action(:set_room)
+        is_expected.to(use_before_action(:set_room))
       end
     end
   end
@@ -22,15 +22,15 @@ RSpec.describe RoomsController, type: :controller do
     end
 
     it 'is expected to assign room instance variable' do
-      expect(assigns[:rooms]).to match_array(Room.all)
+      expect(assigns[:rooms]).to(match_array(Room.all))
     end
 
     it 'renders index template' do
-      is_expected.to render_template(:index)
+      is_expected.to(render_template(:index))
     end
 
     it 'renders application layout' do
-      is_expected.to render_template(:application)
+      is_expected.to(render_template(:application))
     end
   end
 
@@ -41,15 +41,15 @@ RSpec.describe RoomsController, type: :controller do
     end
 
     context 'when room id is valid' do
-      let(:room) { FactoryBot.create :room }
+      let(:room) { FactoryBot.create(:room) }
       let(:params) { { id: room.id } }
 
       it 'is expected to set room instance variable' do
-        expect(assigns[:room]).to eq(Room.find_by(id: params[:id]))
+        expect(assigns[:room]).to(eq(Room.find_by(id: params[:id])))
       end
 
       it 'is expected to render show template' do
-        is_expected.to render_template(:show)
+        is_expected.to(render_template(:show))
       end
     end
   end
@@ -61,11 +61,11 @@ RSpec.describe RoomsController, type: :controller do
     end
 
     it 'is expected to assign room as new instance variable' do
-      expect(assigns[:room]).to be_instance_of(Room)
+      expect(assigns[:room]).to(be_instance_of(Room))
     end
 
     it 'renders new template' do
-      is_expected.to render_template(:new)
+      is_expected.to(render_template(:new))
     end
   end
 
@@ -90,35 +90,35 @@ RSpec.describe RoomsController, type: :controller do
       end
 
       it 'is expected to create new room successfully' do
-        expect(assigns[:room]).to be_instance_of(Room)
+        expect(assigns[:room]).to(be_instance_of(Room))
       end
 
       it 'is expected to have name assigned to it' do
-        expect(assigns[:room].name).to eq('Some name')
+        expect(assigns[:room].name).to(eq('Some name'))
       end
 
       it 'is expected to have room_type assigned to it' do
-        expect(assigns[:room].room_type).to eq('Some room_type')
+        expect(assigns[:room].room_type).to(eq('Some room_type'))
       end
 
       it 'is expected to have price assigned to it' do
-        expect(assigns[:room].price).to eq(100.0)
+        expect(assigns[:room].price).to(eq(100.0))
       end
 
       it 'is expected to have short_description assigned to it' do
-        expect(assigns[:room].short_description).to eq('Some short_description')
+        expect(assigns[:room].short_description).to(eq('Some short_description'))
       end
 
       it 'is expected to have full_description assigned to it' do
-        expect(assigns[:room].full_description).to eq('Some full_description')
+        expect(assigns[:room].full_description).to(eq('Some full_description'))
       end
 
       it 'is expected to redirect to room path' do
-        is_expected.to redirect_to room_path(assigns[:room].id)
+        is_expected.to(redirect_to(room_path(assigns[:room].id)))
       end
 
       it 'is expected to set flash message' do
-        expect(flash[:notice]).to eq('Room was successfully created.')
+        expect(flash[:notice]).to(eq('Room was successfully created.'))
       end
     end
 
@@ -126,11 +126,11 @@ RSpec.describe RoomsController, type: :controller do
       let(:params) { { room: { name: '' } } }
 
       it 'is expected to render new template' do
-        is_expected.to render_template(:new)
+        is_expected.to(render_template(:new))
       end
 
       it 'is expected to add errors to name attribute' do
-        expect(assigns[:room].errors[:name]).to eq(['can\'t be blank'])
+        expect(assigns[:room].errors[:name]).to(eq(['can\'t be blank']))
       end
     end
   end
@@ -142,15 +142,15 @@ RSpec.describe RoomsController, type: :controller do
     end
 
     context 'when room id is valid' do
-      let(:room) { FactoryBot.create :room }
+      let(:room) { FactoryBot.create(:room) }
       let(:params) { { id: room.id } }
 
       it 'is expected to set room instance variable' do
-        expect(assigns[:room]).to eq(Room.find_by(id: params[:id]))
+        expect(assigns[:room]).to(eq(Room.find_by(id: params[:id])))
       end
 
       it 'is expected to render edit template' do
-        is_expected.to render_template(:edit)
+        is_expected.to(render_template(:edit))
       end
     end
   end
@@ -162,7 +162,7 @@ RSpec.describe RoomsController, type: :controller do
     end
 
     context 'when room exist in database' do
-      let(:room) { FactoryBot.create :room }
+      let(:room) { FactoryBot.create(:room) }
       let(:params) do
         { id: room.id, room:
         {
@@ -176,36 +176,36 @@ RSpec.describe RoomsController, type: :controller do
 
       context 'when data is provided is valid' do
         it 'is expected to update room' do
-          expect(room.reload.name).to eq('Some name')
-          expect(room.reload.room_type).to eq('Some room_type')
-          expect(room.reload.price).to eq(100.0)
-          expect(room.reload.short_description).to eq('Some short_description')
-          expect(room.reload.full_description).to eq('Some full_description')
+          expect(room.reload.name).to(eq('Some name'))
+          expect(room.reload.room_type).to(eq('Some room_type'))
+          expect(room.reload.price).to(eq(100.0))
+          expect(room.reload.short_description).to(eq('Some short_description'))
+          expect(room.reload.full_description).to(eq('Some full_description'))
         end
 
         it 'is_expected to redirect_to room_path' do
-          is_expected.to redirect_to(room_path)
+          is_expected.to(redirect_to(room_path))
         end
 
         it 'is expected to set flash message' do
-          expect(flash[:notice]).to eq('Room was successfully updated.')
+          expect(flash[:notice]).to(eq('Room was successfully updated.'))
         end
       end
 
       context 'when data is invalid' do
-        let(:room) { FactoryBot.create :room }
+        let(:room) { FactoryBot.create(:room) }
         let(:params) { { id: room.id, room: { name: '' } } }
 
         it 'is expected not to update room name' do
-          expect(room.reload.name).not_to be_empty
+          expect(room.reload.name).not_to(be_empty)
         end
 
         it 'is expected to render edit template' do
-          expect(response).to render_template(:edit)
+          expect(response).to(render_template(:edit))
         end
 
         it 'is expected to add errors to room name attribute' do
-          expect(assigns[:room].errors[:name]).to eq(['can\'t be blank'])
+          expect(assigns[:room].errors[:name]).to(eq(['can\'t be blank']))
         end
       end
     end
@@ -218,23 +218,23 @@ RSpec.describe RoomsController, type: :controller do
     end
 
     context 'when room exist in database' do
-      let(:room) { FactoryBot.create :room }
+      let(:room) { FactoryBot.create(:room) }
       let(:params) { { id: room.id } }
 
       it 'is expected to delete room successfully' do
-        expect(Room.count).to eq(0)
+        expect(Room.count).to(eq(0))
       end
 
       it 'checks that room was destroyed' do
-        expect(Room.find_by(id: room.id)).to be_nil
+        expect(Room.find_by(id: room.id)).to(be_nil)
       end
 
       it 'is expected to redirect_to rooms_path' do
-        is_expected.to redirect_to(rooms_path)
+        is_expected.to(redirect_to(rooms_path))
       end
 
       it 'is expected to set flash message' do
-        expect(flash[:notice]).to eq('Room was successfully destroyed.')
+        expect(flash[:notice]).to(eq('Room was successfully destroyed.'))
       end
     end
   end
@@ -246,22 +246,22 @@ RSpec.describe RoomsController, type: :controller do
     end
 
     context 'when room exist in database' do
-      let(:room) { FactoryBot.create :room }
+      let(:room) { FactoryBot.create(:room) }
       let(:params) { { id: room.id } }
 
       context 'when data is provided is valid' do
         let(:params) { { id: room.id } }
 
         it 'is expected to update room' do
-          expect(room.reload.main_image.url).to eq(nil)
+          expect(room.reload.main_image.url).to(eq(nil))
         end
 
         it 'is_expected to redirect_to room_path' do
-          is_expected.to redirect_to(edit_room_path(room.id))
+          is_expected.to(redirect_to(edit_room_path(room.id)))
         end
 
         it 'is expected to set flash message' do
-          expect(flash[:notice]).to eq('Image was successfully deleted.')
+          expect(flash[:notice]).to(eq('Image was successfully deleted.'))
         end
       end
     end

@@ -35,8 +35,10 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 5.0.0'
-  gem 'shoulda',                      '~> 3.5'
-  gem 'shoulda-callback-matchers',    '~> 1.1', '>= 1.1.3'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.3'
 end
 
 group :development do
@@ -76,7 +78,3 @@ gem 'caxlsx'
 gem 'caxlsx_rails'
 
 gem 'sidekiq'
-
-gem 'rubocop', require: false
-
-gem 'rubocop-rails', require: false
