@@ -7,12 +7,6 @@ class BookingsController < ApplicationController
   def index
     @bookings = Booking.all.order(created_at: :desc)
     authorize @bookings
-    actual_bookings = @bookings.where(actual: true)
-    respond_to do |format|
-      format.html
-      format.csv { send_data actual_bookings.to_csv }
-      format.xlsx { send_data actual_bookings.to_xlsx }
-    end
   end
 
   def show
@@ -59,6 +53,18 @@ class BookingsController < ApplicationController
       format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def generate_csv
+    CsvJob.perform_later
+  end
+
+  def generate_xlsx
+    XlsxJob.perform_later
+  end
+
+  def statistics
+    @statistics = Statistic.all.order(updated_at: :desc)
   end
 
   private

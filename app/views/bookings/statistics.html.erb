@@ -1,0 +1,14 @@
+<h1>Statistics</h1>
+
+<table>
+  <tbody>
+  <% @statistics.each do |statistic| %>
+    <tr>
+      <td><%= link_to "Download #{statistic.format == 'csv' ? 'CSV' : 'Excel'}", statistic.path %></td>
+      <td><%= statistic.updated_at %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', bookings_path %>
