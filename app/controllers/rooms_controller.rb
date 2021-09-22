@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
   before_action :set_room, only: %i[show edit update destroy delete_image]
 
   def index
-    @rooms = Room.all.order(updated_at: :desc)
+    @rooms = Room.order(updated_at: :desc)
     authorize(@rooms)
   end
 
