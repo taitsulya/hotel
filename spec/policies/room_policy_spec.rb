@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe RoomPolicy do
+RSpec.describe(RoomPolicy) do
   subject { RoomPolicy.new(admin, room) }
 
   let(:room) { FactoryBot.create(:room) }

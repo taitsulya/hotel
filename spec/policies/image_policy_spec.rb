@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ImagePolicy do
+RSpec.describe(ImagePolicy) do
   subject { ImagePolicy.new(admin, image) }
 
   let(:room) { FactoryBot.create(:room) }
