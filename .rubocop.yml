@@ -8,6 +8,9 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+
 Metrics/MethodLength:
   Enabled: false
 

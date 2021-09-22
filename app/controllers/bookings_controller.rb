@@ -6,37 +6,37 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all.order(created_at: :desc)
-    authorize @bookings
+    authorize(@bookings)
     actual_bookings = @bookings.where(actual: true)
     respond_to do |format|
       format.html
-      format.csv { send_data actual_bookings.to_csv }
-      format.xlsx { send_data actual_bookings.to_xlsx }
+      format.csv { send_data(actual_bookings.to_csv) }
+      format.xlsx { send_data(actual_bookings.to_xlsx) }
     end
   end
 
   def show
-    redirect_to rooms_path unless @booking
+    redirect_to(rooms_path) unless @booking
   end
 
   def new
     @booking = @room.bookings.build
-    authorize @booking
+    authorize(@booking)
   end
 
   def create
     @booking = @room.bookings.build(booking_params)
-    authorize @booking
+    authorize(@booking)
     respond_to do |format|
       if @booking.save
         format.html do
           flash.now[:notice] = 'Booking was successfully created.'
-          render :show
+          render(:show)
         end
-        format.json { render :show, status: :created, location: @booking }
+        format.json { render(:show, status: :created, location: @booking) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
+        format.html { render(:new, status: :unprocessable_entity) }
+        format.json { render(json: @booking.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -44,11 +44,11 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to bookings_url, notice: 'Booking was successfully updated.' }
-        format.json { render :index, status: :ok, location: @booking }
+        format.html { redirect_to(bookings_url, notice: 'Booking was successfully updated.') }
+        format.json { render(:index, status: :ok, location: @booking) }
       else
-        format.html { render :index, status: :unprocessable_entity }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
+        format.html { render(:index, status: :unprocessable_entity) }
+        format.json { render(json: @booking.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -56,8 +56,8 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to(bookings_url, notice: 'Booking was successfully destroyed.') }
+      format.json { head(:no_content) }
     end
   end
 
@@ -65,7 +65,7 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
-    authorize @booking
+    authorize(@booking)
   end
 
   def current_room

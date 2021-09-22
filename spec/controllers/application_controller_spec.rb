@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe ApplicationController, type: :controller do
+RSpec.describe(ApplicationController, type: :controller) do
   controller do
     def index
-      raise Pundit::NotAuthorizedError
+      raise(Pundit::NotAuthorizedError)
     end
   end
 
@@ -15,11 +15,11 @@ RSpec.describe ApplicationController, type: :controller do
     end
 
     it 'redirects to request.referer or root_path' do
-      expect(response).to redirect_to(request.referer || root_path)
+      expect(response).to(redirect_to(request.referer || root_path))
     end
 
     it 'is expected to set flash warning' do
-      expect(flash[:warning]).to eq('You don\'t have permissions to perform this action.')
+      expect(flash[:warning]).to(eq('You don\'t have permissions to perform this action.'))
     end
   end
 end

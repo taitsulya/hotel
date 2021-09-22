@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe BookingPolicy do
+RSpec.describe(BookingPolicy) do
   subject { BookingPolicy.new(admin, booking) }
 
   let(:room) { FactoryBot.create(:room) }

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ReviewPolicy do
+RSpec.describe(ReviewPolicy) do
   subject { ReviewPolicy.new(admin, review) }
 
   let(:review) { FactoryBot.create(:review) }

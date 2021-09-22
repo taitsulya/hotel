@@ -11,9 +11,9 @@ class HomeController < ApplicationController
 
   def update
     if Home.first.update(home_params)
-      redirect_to root_path, notice: 'Description was successfully updated.'
+      redirect_to(root_path, notice: 'Description was successfully updated.')
     else
-      render :index, status: :unprocessable_entity
+      render(:index, status: :unprocessable_entity)
     end
   end
 
