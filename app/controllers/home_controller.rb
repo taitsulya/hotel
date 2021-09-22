@@ -20,7 +20,7 @@ class HomeController < ApplicationController
   private
 
   def set_default_description
-    Home.create(description: 'The best hotel ever') if Home.all.count.zero?
+    Home.create(description: 'The best hotel ever') if Home.count.zero?
   end
 
   def home_params
