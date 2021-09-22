@@ -4,11 +4,8 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: %i[update destroy]
 
   def index
-    @reviews = if current_admin
-                 Review.all.order(created_at: :desc)
-               else
-                 Review.where(checked: true).order(created_at: :desc)
-               end
+    @reviews = Review.order(created_at: :desc)
+    @reviews = Review.checked_and_sorted unless current_admin
     authorize(@reviews)
     @review = Review.new
   end
@@ -24,7 +21,7 @@ class ReviewsController < ApplicationController
         format.json { render(:index, status: :created, location: @review) }
       else
         format.html do
-          @reviews = Review.where(checked: true).order(created_at: :desc)
+          @reviews = Review.checked_and_sorted
           render(:index, status: :unprocessable_entity)
         end
         format.json { render(json: @review.errors, status: :unprocessable_entity) }
@@ -36,11 +33,13 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.update(review_params)
         format.html do
-          redirect_to(reviews_url, notice: if review_params[:checked] == '1'
-                                             'Review was checked. It will be displayed to users.'
-                                           else
-                                             "Review was unchecked. It won't be displayed to users."
-                                           end)
+          flash[:notice] =
+            if review_params[:checked] == '1'
+              'Review was checked. It will be displayed to users.'
+            else
+              "Review was unchecked. It won't be displayed to users."
+            end
+          redirect_to(reviews_url)
         end
         format.json { render(:index, status: :ok, location: @review) }
       else
